@@ -16,7 +16,7 @@ class List_Editor():
         while True:
             event, values = self.window.read()
 
-            if event == WIN_CLOSED:
+            if event in (WIN_CLOSED, '-Back-'): #Dois eventos acontecendo, fechar a janela  e botão voltar
                 self.window.close()
                 self.ems.unhide_window()
                 break
