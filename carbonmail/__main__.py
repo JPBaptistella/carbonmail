@@ -2,3 +2,7 @@
 #Quando iniciamos o projeto ele é o primeiro a ser executado
 #Ponto de entrada da aplicação
 
+from carbonmail.email_sender.manager import initialize as init_sender
+
+init_sender()
+
