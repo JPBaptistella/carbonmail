@@ -3,15 +3,16 @@ from PySimpleGUI import WIN_CLOSED
 from carbonmail.email_sender import view
 from carbonmail.list_editor.manager import initialize as init_list_editor
 
-class Email_Sender():
+
+class Email_Sender:
     def __init__(self):
         self.window = None
 
-    def instantiate(self): #cria a janela
+    def instantiate(self):
         if self.window == None:
             self.window = view.get_window()
 
-    def enable_window(self): #habilita e trabalha
+    def enable_window(self):
         self.instantiate()
 
         while True:
@@ -21,29 +22,28 @@ class Email_Sender():
                 self.close_window()
                 break
 
-            if event == '-Send-':
-                title=values['-Title-']
-                content=values['-Content-']
+            if event == "-Send-":
+                title = values["-Title-"]
+                content = values["-Content-"]
 
                 sg.Popup(
-                    f'O Titilo é: {title}\nO Conteúdo é: {content}', #\n configura quebra de linha
-                    title='E-mail',
+                    f"O Título é: {title}\nO Conteudo é: {content}",
+                    title="E-mail",
                 )
 
-            if event == '-ListEditor-':
+            if event == "-ListEditor-":
                 self.hide_window()
                 init_list_editor(self)
 
-    def close_window(self): #fecha a janela
+    def close_window(self):
         if self.window is not None:
             self.window.Close()
-        self.window=None #convenção
+        self.window = None
 
-    def hide_window(self): #esconde a janela
+    def hide_window(self):
         if self.window is not None:
             self.window.Hide()
 
-    def unhide_window(self): #mostra a janela
+    def unhide_window(self):
         if self.window is not None:
             self.window.UnHide()
-        
